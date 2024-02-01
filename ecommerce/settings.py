@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #Custom Apps
-    'core', 
+    'core',
+    'userauths', 
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,5 @@ JAZZMIN_SETTINGS = {
     'site_logo': "img/avatar.jpg",
     'copyright': "hello-world.com",
 }
+
+AUTH_USER_MODEL = 'userauths.User'
