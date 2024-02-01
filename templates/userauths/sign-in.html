@@ -1,8 +1,5 @@
 {% load static %}
 
-
-
-
 <!doctype html>
     <html lang="en">
     <head>
@@ -20,47 +17,32 @@
         <div class="container-fluid vh-100 overflow-auto">
             <div class="row vh-100 ">
                 <div class="col-lg-6 bg-gray p-5 text-center">
-                   <h4 class="text-center fw-bolder fs-2">Login</h4>
-                   <p class="mb-3 fs-7">Already have an account ?</p>
-                   <a href="{% url 'userauths:sign-in' %}"><button class="btn fw-bold mb-5 btn-outline-success px-4 rounded-pill">log In</button></a>
+                   <h4 class="text-center fw-bolder fs-2">Register</h4>
+                   <p class="mb-3 fs-7">Register Now and Fell the New Digital World</p>
+                   <a href="{% url 'userauths:sign-up' %}">
+                       <button class="btn fw-bold mb-5 btn-outline-success px-4 rounded-pill">Sign Up</button>
+                   </a>
                    <div class="img-cover p-4">
                         <img src="{% static 'assets/images/loginbg.svg' %}" alt="">
                    </div>
                 </div>
-                
                 <div class="col-lg-6 p  vh-100">
                    <div class="row d-flex vh-100">
                        <div class="col-md-8 p-4 ikigui m-auto text-center align-items-center">
-                        {% if form.errors %}
-                        <div class="alert alert-danger">
-                            <strong>{{form.errors}}</strong>
-                        </div>    
-                        {% endif %}
-
-                           <h4 class="text-center fw-bolder mb-4 fs-2">Sign Up</h4>
-
+                           <h4 class="text-center fw-bolder mb-4 fs-2">Login</h4>
                            <form method="POST">
-                                 {% csrf_token %}
-                            
+                            {% csrf_token %}
                                 <div class="input-group mb-4">
                                     <span class="input-group-text border-end-0 inbg" id="basic-addon1"><i class="bi bi-person"></i></span>
-                                    {{form.username}}
-                                </div>
-                                <div class="input-group mb-4">
-                                    <span class="input-group-text border-end-0 inbg" id="basic-addon1"><i class="bi bi-envelope"></i></span>
-                                    {{form.email}}
+                                    <input type="text" required class="form-control ps-2 border-start-0 fs-7 inbg form-control-lg mb-0" placeholder="Enter Username or Email" name="email" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="input-group mb-4">
                                     <span class="input-group-text border-end-0 inbg" id="basic-addon1"><i class="bi bi-lock"></i></span>
-                                    {{form.password1}}
-                                </div>
-                                <div class="input-group mb-4">
-                                    <span class="input-group-text border-end-0 inbg" id="basic-addon1"><i class="bi bi-lock"></i></span>
-                                    {{form.password2}}
+                                    <input type="password" required class="form-control ps-2 fs-7 border-start-0 form-control-lg inbg mb-0" placeholder="Enter Password" name="password" aria-describedby="basic-addon1">
                                 </div>
                                 
-                                <button type="submit" class="btn btn-lg fw-bold fs-7 btn-success  w-100">Register</button>
-                            </form>
+                                <button type="submit" class="btn btn-lg fw-bold fs-7 btn-success  w-100" name="login">Log in</button>
+                           </form>
                            
                            <p class="text-center py-4 fw-bold fs-8">Or Sign in with social platforms</p>
                            
