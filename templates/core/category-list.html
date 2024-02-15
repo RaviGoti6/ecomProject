@@ -1,0 +1,111 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% block extrahead %}
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/icons/apple-touch-icon.png' %}">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/icons/favicon-32x32.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/icons/favicon-16x16.png' %}">
+
+
+<!-- Plugins CSS File -->
+<link rel="stylesheet" href="{% static 'assets/css/mollacss/bootstrap.min.css' %}">
+<!-- Main CSS File -->
+<link rel="stylesheet" href="{% static 'assets/css/mollacss/style.css' %}">
+
+{% endblock extrahead%}
+
+{% block content %}
+
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">Categories<span>Shop</span></h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+    <nav aria-label="breadcrumb" class="breadcrumb-nav breadcrumb-with-filter">
+        <div class="container">
+            <a href="#" class="sidebar-toggler"><i class="icon-bars"></i>Filters</a>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                <!-- <li class="breadcrumb-item"><a href="#">Product Category</a></li> -->
+                <li class="breadcrumb-item active" aria-current="page">Categories ({{categories.count}})</li>
+            </ol>
+        </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+
+    <div class="page-content">
+        <div class="categories-page">
+            <div class="container">
+                <div class="row">
+
+                    {% for c in categories %}
+                    <div class="col-sm-6 col-md-3">
+                        <div class="banner banner-cat banner-badge">
+                            <a href="#">
+                                <img src="{{c.image.url}}" alt="Banner">
+                            </a>
+
+                            <a class="banner-link" href="#">
+                                <h3 class="banner-title">{{c.title}}</h3><!-- End .banner-title -->
+                                <h4 class="banner-subtitle">{{c.category.count}} Product{{c.category.count|pluralize}}</h4><!-- End .banner-subtitle -->
+                                <span class="banner-link-text">Shop Now</span>
+                            </a><!-- End .banner-link -->
+                        </div><!-- End .banner -->
+                    </div><!-- End .col-md-3 -->
+                    {% endfor %}
+
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+        </div><!-- End .categories-page -->
+        
+        <div class="sidebar-filter-overlay"></div><!-- End .sidebar-filter-overlay -->
+        <aside class="sidebar-shop sidebar-filter sidebar-filter-banner" >
+            <div class="sidebar-filter-wrapper" >
+                <div class="widget widget-clean">
+                    <label><i class="icon-close"></i>Filters</label>
+                    <a href="#" class="sidebar-filter-clear">Clean All</a>
+                </div>
+                <div class="widget">
+                    <h3 class="widget-title">
+                        Browse Category
+                    </h3><!-- End .widget-title -->
+
+                    <div class="widget-body">
+                        <div class="filter-items filter-items-count">
+
+                            {% for c in categories %}
+                            <div class="filter-item">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="{{c.cid}}">
+                                    <label class="custom-control-label" for="{{c.cid}}">{{c.title}}</label>
+                                </div><!-- End .custom-checkbox -->
+                                <span class="item-count">{{c.category.count}}</span>
+                            </div><!-- End .filter-item -->
+                            {% endfor %}
+
+                        </div><!-- End .filter-items -->
+                    </div><!-- End .widget-body -->
+                </div><!-- End .widget -->
+            </div><!-- End .sidebar-filter-wrapper -->
+        </aside><!-- End .sidebar-filter -->
+    </div><!-- End .page-content -->
+</main><!-- End .main -->
+
+{% endblock content %}
+
+<!-- <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button> -->
+
+{% block js %}
+<!-- Plugins JS File -->
+<script src="{% static 'assets/js/mollajs/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/mollajs/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/mollajs/jquery.hoverIntent.min.js' %}"></script>
+<script src="{% static 'assets/js/mollajs/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/mollajs/superfish.min.js' %}"></script>
+<script src="{% static 'assets/js/mollajs/owl.carousel.min.js' %}"></script>
+<!-- Main JS File -->
+<script src="{% static 'assets/js/mollajs/main.js' %}"></script>
+
+{% endblock js %}
